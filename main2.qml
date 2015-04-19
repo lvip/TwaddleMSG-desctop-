@@ -70,10 +70,11 @@ ApplicationWindow {
         opacity: 0
         visible: false
         anchors.top: header1.bottom
+        anchors.bottom : parent.bottom
         //anchors.fill: parent
         // Implements back key navigation
         focus: true
-        Keys.onReleased: if (event.key === Qt.Key_Backspace && stackView.depth > 1) {
+        Keys.onReleased: if (event.key === Qt.Key_Home && stackView.depth > 1) {
                              stackView.pop();
                              event.accepted = true;
                          }

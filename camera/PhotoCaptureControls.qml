@@ -50,6 +50,7 @@ FocusScope {
     signal previewSelected
     signal videoModeSelected
     id : captureControls
+    anchors.bottom: parent.bottom
 
     Rectangle {
         id: buttonPaneShadow

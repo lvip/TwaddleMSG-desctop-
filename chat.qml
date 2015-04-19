@@ -68,9 +68,10 @@ Item {
 
             chatContent.append({content: "Me: " + data})
             //! [BluetoothSocket-5]
-            socket.stringData = data
+           // socket.stringData = data
             //! [BluetoothSocket-5]
             chatView.positionViewAtEnd()
+            input.forceActiveFocus()
 
             input.focus = hasFocus;
         }
@@ -82,7 +83,10 @@ Item {
             InputBox
             {
                 id: input
-                Keys.onReturnPressed: chatBox.sendMessage()
+                Keys.onReturnPressed:
+                {chatBox.sendMessage()
+                input.forceActiveFocus()}
+
                 height: sendButton.height
                 width: parent.width -clearA.width -sendButton.width - 15
                 anchors.left: parent.left
