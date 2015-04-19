@@ -1,0 +1,81 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>main2.qml</file>
+        <file>AndroidDelegate.qml</file>
+        <file>ButtonPage.qml</file>
+        <file>contact.qml</file>
+        <file>ContactList.qml</file>
+        <file>Header.qml</file>
+        <file>te.jpg</file>
+        <file>TextField.qml</file>
+        <file>TouchButton.qml</file>
+        <file>Login.qml</file>
+    </qresource>
+    <qresource prefix="/camera">
+        <file>camera/CameraButton.qml</file>
+        <file>camera/CameraListButton.qml</file>
+        <file>camera/CameraListPopup.qml</file>
+        <file>camera/CameraPropertyButton.qml</file>
+        <file>camera/CameraPropertyPopup.qml</file>
+        <file>camera/declarative-camera.qml</file>
+        <file>camera/FocusButton.qml</file>
+        <file>camera/PhotoCaptureControls.qml</file>
+        <file>camera/PhotoPreview.qml</file>
+        <file>camera/Popup.qml</file>
+        <file>camera/VideoCaptureControls.qml</file>
+        <file>camera/VideoPreview.qml</file>
+        <file>camera/ZoomControl.qml</file>
+        <file>camera/images/camera_auto_mode.png</file>
+        <file>camera/images/camera_camera_setting.png</file>
+        <file>camera/images/camera_flash_auto.png</file>
+        <file>camera/images/camera_flash_fill.png</file>
+        <file>camera/images/camera_flash_off.png</file>
+        <file>camera/images/camera_flash_redeye.png</file>
+        <file>camera/images/camera_white_balance_cloudy.png</file>
+        <file>camera/images/camera_white_balance_flourescent.png</file>
+        <file>camera/images/camera_white_balance_incandescent.png</file>
+        <file>camera/images/camera_white_balance_sunny.png</file>
+        <file>camera/images/toolbutton.png</file>
+        <file>camera/images/toolbutton.sci</file>
+    </qresource>
+    <qresource prefix="/chat">
+        <file>chat/checkbox.png</file>
+        <file>chat/checkbox_checked.png</file>
+        <file>chat/delegate.png</file>
+        <file>chat/delegate_pressed.png</file>
+        <file>Button.qml</file>
+        <file>ButtonM.qml</file>
+        <file>chat.qml</file>
+        <file>InputBox.qml</file>
+        <file>Search.qml</file>
+    </qresource>
+    <qresource prefix="/icons">
+        <file>icons/add_icon.png</file>
+        <file>icons/add_icon_pressed.png</file>
+        <file>icons/back_icon.png</file>
+        <file>icons/delete_icon.png</file>
+        <file>icons/delete_icon_pressed.png</file>
+        <file>icons/reload_icon.png</file>
+        <file>icons/reload_icon_pressed.png</file>
+        <file>icons/share_icon.png</file>
+        <file>icons/share_icon_pressed.png</file>
+    </qresource>
+    <qresource prefix="/images">
+        <file>images/button_default.png</file>
+        <file>images/button_pressed.png</file>
+        <file>images/clear.png</file>
+        <file>images/close-exit-button-11703915.jpg</file>
+        <file>images/default.png</file>
+        <file>images/exit.png</file>
+        <file>images/lineedit-bg.png</file>
+        <file>images/Logo.jpg</file>
+        <file>images/quit.jpg</file>
+        <file>images/quit.png</file>
+        <file>images/quit2.jpg</file>
+        <file>images/textinput.png</file>
+    </qresource>
+    <qresource prefix="/youtube">
+        <file>youtube.qml</file>
+    </qresource>
+</RCC>
