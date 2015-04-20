@@ -1,7 +1,8 @@
 
 import QtQuick 2.3
 import QtQuick.Window 2.2
-import QtQuick.Controls 1.2
+import QtQuick.Controls 1.3
+import QtQuick.Layouts 1.1
 import QtQuick.Controls.Styles 1.1
 
 ApplicationWindow {
@@ -10,6 +11,42 @@ ApplicationWindow {
     height: 600
     property real scaleFactor: Screen.pixelDensity / 5.0
     property int intScaleFactor: Math.max(1, scaleFactor)
+
+
+    //тест растягивания внут окон
+    /*
+    SplitView {
+        z:-20
+        orientation:Qt.Horizontal
+        anchors.fill: parent
+        anchors.margins: 40
+
+
+        Rectangle {
+            id: column
+            width: 200
+            Layout.minimumWidth: 100
+            Layout.maximumWidth: 300
+            color: "lightsteelblue"
+        }
+
+        SplitView {
+            orientation: Qt.Vertical
+            Layout.fillWidth: true
+
+            Rectangle {
+                id: row1
+                height: 200
+                color: "lightblue"
+                Layout.minimumHeight: 1
+            }
+
+            Rectangle {
+                id: row2
+                color: "lightgray"
+            }
+        }
+    }*/
     Rectangle {
         color: "#212126"
         anchors.fill: parent

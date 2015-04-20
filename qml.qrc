@@ -49,6 +49,11 @@
         <file>chat.qml</file>
         <file>InputBox.qml</file>
         <file>Search.qml</file>
+        <file>ContactList.qml</file>
+        <file>AndroidDelegate.qml</file>
+        <file>chat2.qml</file>
+        <file>chat3.qml</file>
+        <file>chat4.qml</file>
     </qresource>
     <qresource prefix="/icons">
         <file>icons/add_icon.png</file>

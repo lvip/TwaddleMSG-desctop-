@@ -15,5 +15,6 @@ int main(int argc, char *argv[])
     QQmlContext* ctx = engine.rootContext();
     ctx->setContextProperty("receiver", &receiver);
     engine.load(QUrl(QStringLiteral("qrc:/main2.qml")));
+    //engine.set
     return app.exec();
 }

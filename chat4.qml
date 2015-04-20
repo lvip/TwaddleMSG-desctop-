@@ -34,7 +34,7 @@ Item {
         z:60
         opacity:0
         width: 200; height: 200
-        anchors.right: parent.left
+        anchors.right: handle.left
         anchors.top: parent.top
         anchors.bottom: parent.bottom
         ContactList{
@@ -57,6 +57,21 @@ Item {
         transitions: Transition {
             // smoothly reanchor myRect and move into new position
             AnchorAnimation { duration: 500 }
+        }
+        Rectangle {
+            id: handle
+            width: 5
+            height: parent.height
+            color: handleMouseArea.pressed ? "orange" : "red"
+
+            MouseArea {
+                id: handleMouseArea
+                hoverEnabled: true
+                anchors.fill: parent
+                drag.target: handle
+                drag.axis: Drag.XAxis
+                onEntered:cursorShape=Qt.SizeHorCursor
+            }
         }
 
 

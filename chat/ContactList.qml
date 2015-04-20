@@ -2,13 +2,6 @@
 import QtQuick 2.2
 import QtQuick.Controls 1.3
 import QtQuick.Controls.Styles 1.1
-Item {
-    Rectangle
-    {
-       anchors.fill: parent
-       color: "#11ffffff"
-    }
-
 
 ScrollView {
     width: parent.width
@@ -26,17 +19,17 @@ ScrollView {
                 MenuItem {
                     text: qsTr('Начать чат')
                     shortcut: "Ctrl+Enter"
-                    onTriggered: stackView.push(Qt.resolvedUrl("/chat/chat2.qml"))
+                    onTriggered: stackView.push(Qt.resolvedUrl("/chat/chat.qml"))
                 }
                 MenuItem {
                     text: qsTr('Удалить из друзей')
                     shortcut: "Ctrl+DEL"
-                    onTriggered: stackView.push(Qt.resolvedUrl("/chat/chat3.qml"))
+                    onTriggered: stackView.push(Qt.resolvedUrl("/chat/chat.qml"))
                 }
                 MenuItem {
                     text: qsTr('Сделать заметку о контакте')
                     shortcut: "Ctrl+L"
-                    onTriggered: stackView.push(Qt.resolvedUrl("/chat/chat4.qml"))
+                    onTriggered: stackView.push(Qt.resolvedUrl("/chat/chat.qml"))
                 }
                 MenuItem {
                     text: qsTr('Информация о контакте')
@@ -77,5 +70,4 @@ ScrollView {
             implicitHeight: 26
         }
     }
-}
 }

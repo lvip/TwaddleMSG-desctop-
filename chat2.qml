@@ -92,19 +92,6 @@ Item {
 
 
 
-    Rectangle {
-        id: background
-        z: 0
-        anchors.fill: parent
-        color: "#5d5b59"
-    }
-
-    Search {
-        id: searchBox
-        anchors.centerIn: chatroot
-        opacity: 1
-    }
-
 
     Rectangle {
 

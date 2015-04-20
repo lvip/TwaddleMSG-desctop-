@@ -77,6 +77,7 @@ Item {
     }
 
     Image {
+        rotation: 180
         anchors.right: parent.right
         anchors.rightMargin: 20
         anchors.verticalCenter: parent.verticalCenter
