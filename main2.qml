@@ -9,6 +9,8 @@ ApplicationWindow {
     visible: true
     width: 800
     height: 600
+    minimumWidth: 300
+    minimumHeight: 300
     property real scaleFactor: Screen.pixelDensity / 5.0
     property int intScaleFactor: Math.max(1, scaleFactor)
 
@@ -124,7 +126,7 @@ ApplicationWindow {
                 anchors.fill: parent
                 delegate: AndroidDelegate {
                     text: title
-                    onClicked: stackView.push(Qt.resolvedUrl(page))
+                    onClicked: {stackView.push(Qt.resolvedUrl(page))}
                 }
             }
         }

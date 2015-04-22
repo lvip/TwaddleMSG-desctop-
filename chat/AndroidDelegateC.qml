@@ -1,9 +1,9 @@
 /****************************************************************************
 **
-** Copyright (C) 2014 Digia Plc and/or its subsidiary(-ies).
+** Copyright (C) 2013 Digia Plc and/or its subsidiary(-ies).
 ** Contact: http://www.qt-project.org/legal
 **
-** This file is part of the examples of the QtBluetooth module.
+** This file is part of the Qt Quick Controls module of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:BSD$
 ** You may use this file under the terms of the BSD license as follows:
@@ -38,58 +38,67 @@
 **
 ****************************************************************************/
 
+
+
+
+
 import QtQuick 2.3
 
-Rectangle {
-    property bool animationRunning: true
+Item {
+    id: root
+    width: parent.width
+    height: 88
 
-    function appendText(newText) {
-        searchText.text += newText
+    property alias text: textitem.text
+    signal clicked
+
+    Rectangle {
+        anchors.fill: parent
+        color: "#33ff0000"
+        visible: mouse.pressed
     }
 
-    width: searchText.width + 40;
-    height: searchText.height + bluetoothImage.height + 40;
-    color: "#d7d6d5"
-    border.color: "black"
-    border.width: 1
-    radius: 5
+    Image
+    {   id:img1
+        anchors.left: parent.left
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.leftMargin: 5
+        source: "/images/images/msDefaultPicture.png"
+    }
+    ShaderEffectSource {
+        width: 100; height: 100
+        sourceItem: img1
+    }
+    Text {
+        id: textitem
+        color: "white"
+        font.pixelSize: 32
+        text: modelData
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.left: parent.left
+        anchors.leftMargin: 30
+    }
 
-    Behavior on height {
-        NumberAnimation { duration: 300 }
+    Rectangle {
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.margins: 15
+        height: 1
+        color: "#424246"
     }
 
     Image {
-        id: bluetoothImage
-        source: "/images/images/default.png"
-        anchors.top: parent.top
-        anchors.topMargin: 10
-        anchors.horizontalCenter: parent.horizontalCenter
-
-        RotationAnimation on rotation{
-            id: ranimation
-            target: bluetoothImage
-            easing.type: Easing.InOutBack
-            property: "rotation"
-            from: 0
-            to: 360
-            duration: 2000
-            loops: Animation.Infinite
-            alwaysRunToEnd: true
-            running: animationRunning
-        }
+        rotation: 180
+        anchors.right: parent.right
+        anchors.rightMargin: 20
+        anchors.verticalCenter: parent.verticalCenter
+        source: "/icons/icons/back_icon.png"
     }
 
-    Text {
-        id: searchText
-
-        anchors.top: bluetoothImage.bottom
-        wrapMode: Text.WrapAnywhere
-        //anchors.bottom: parent.bottom
-        anchors.topMargin: 10
-        anchors.horizontalCenter: parent.horizontalCenter
-        text: qsTr("Searching for chat service...");
-        color: "black"
+    MouseArea {
+        id: mouse
+        anchors.fill: parent
+        onClicked: root.clicked()
 
     }
 }
-

@@ -1,8 +1,10 @@
 
-import QtQuick 2.2
+import QtQuick 2.3
 import QtQuick.Controls 1.3
 import QtQuick.Controls.Styles 1.1
-Item {
+  Item{
+      id:com1
+    Component.onDestruction: console.log("destroyed inline item: " + stackView.index)
     Rectangle
     {
        anchors.fill: parent
@@ -20,7 +22,9 @@ ScrollView {
     ListView {
         anchors.fill: parent
         model: 15
-        delegate: AndroidDelegate {
+        z:40
+        delegate: AndroidDelegateC {
+            z:-100
             text: "Контакт #" + modelData
             Menu { id: contextMenu
                 MenuItem {
@@ -52,7 +56,11 @@ ScrollView {
                                         //stackView.push(Qt.resolvedUrl("contact.qml"))
                                     }
                                     else{
-                                            stackView.push(Qt.resolvedUrl("/chat/chat.qml"))}
+                                        if(stackView.depth>2)
+                                            stackView.push({item:Qt.resolvedUrl("/chat/chat3.qml"), destroyOnPop:true,replace:true})
+                                        else
+                                        stackView.push({item:Qt.resolvedUrl("/chat/chat3.qml"), destroyOnPop:true})
+                                    }
             }
 
         }

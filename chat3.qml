@@ -11,8 +11,10 @@ Item {
     height: parent.height
     width: parent.width
 
+
     Rectangle{
      id:container1
+     Component.onCompleted: state="reanchored"
      anchors.left: parent.left
      width: 100
      height: parent.height
@@ -21,6 +23,7 @@ Item {
      ContactList{
          width: 200; height: 200
          anchors.fill: parent
+
          z:80
          id:clist
 
@@ -40,12 +43,11 @@ Item {
          AnchorAnimation { duration: 500 }
      }
     }
-    ButtonM {
+    ButtonI {
         z:30
         id: contanB
-        anchors.right: chatroot.right
+        anchors.left: chatBox.left
         anchors.top: chatroot.top
-        label: "Развернуть список"
         onButtonClick:
         {
             //trect1.anchors.right= parent.right
@@ -73,18 +75,22 @@ Rectangle {
     z:400
     id: handle
     //anchors.left:parent.right
-    x:300
+    x:250
     width: 5
     height: parent.height
-    color: handleMouseArea.pressed ? "orange" : "blue"
+    color: handleMouseArea.pressed ? "blue" : "orange"
     Behavior on opacity  {NumberAnimation{ easing.type: Easing.Linear;duration: 400}}
 
     MouseArea {
         id: handleMouseArea
+        drag.axis: "XAxis"
+        drag.minimumX: 80
+        drag.maximumX: 400
+        drag.filterChildren: true
         hoverEnabled: true
         anchors.fill: parent
         drag.target: handle
-        drag.axis: Drag.XAxis
+        //drag.axis: Drag.XAxis
         onEntered:cursorShape=Qt.SizeHorCursor
     }
 }
@@ -142,7 +148,7 @@ Rectangle {
             input.forceActiveFocus()}
 
             height: sendButton.height
-            width: parent.width -clearA.width -sendButton.width - 15
+            width: parent.width -sendButton.width - 15
             anchors.left: parent.left
             anchors.bottom: chatitem.bottom
 
@@ -150,19 +156,12 @@ Rectangle {
 
         ButtonM {
             id: sendButton
-            anchors.left: clearA.right
+            anchors.right: parent.right
             anchors.bottom: chatitem.bottom
             label: "Send"
             onButtonClick: chatBox.sendMessage()
         }
 
-        ButtonM {
-            id: clearA
-            anchors.left: input.right
-            anchors.bottom: chatitem.bottom
-            label: "Удалить всё"
-            onButtonClick: chatContent.clear()
-        }
         Rectangle {
             id: rectangle1
             //height: parent.height - input.height - 50
@@ -282,26 +281,7 @@ Component {
            //    onDataChanged: console.log("The application data changed!")
            //}
        }
-    /* TextInput {
-           z:7
-           id:textMSG
-           readOnly: true
-           focus:true
-           anchors.top: dataT.bottom
-           anchors.fill: parent
-           horizontalAlignment: Text.AlignHCenter
-           verticalAlignment: Text.AlignVCenter
-           //elide: Text.ElideRight
-           anchors.verticalCenter: parent.verticalCenter
-           //anchors.left: checkbox.right
-           anchors.right: parent.right
-           anchors.leftMargin: 12
-           anchors.rightMargin: 40
-           wrapMode: Text.Wrap
-           //renderType: Text.NativeRendering
-           text: modelData
-           selectByMouse: true
-       }*/
+
          TextInput {
 
              id: textInput2

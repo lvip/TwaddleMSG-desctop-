@@ -11,6 +11,9 @@
         <file>TextField.qml</file>
         <file>TouchButton.qml</file>
         <file>Login.qml</file>
+        <file>AndroidDelegateC.qml</file>
+        <file>ShaderButton.qml</file>
+        <file>Effect.qml</file>
     </qresource>
     <qresource prefix="/camera">
         <file>camera/CameraButton.qml</file>
@@ -50,10 +53,12 @@
         <file>InputBox.qml</file>
         <file>Search.qml</file>
         <file>ContactList.qml</file>
-        <file>AndroidDelegate.qml</file>
         <file>chat2.qml</file>
         <file>chat3.qml</file>
         <file>chat4.qml</file>
+        <file>ButtonI.qml</file>
+        <file>icons/contactlistS.jpg</file>
+        <file>AndroidDelegateC.qml</file>
     </qresource>
     <qresource prefix="/icons">
         <file>icons/add_icon.png</file>
@@ -65,6 +70,7 @@
         <file>icons/reload_icon_pressed.png</file>
         <file>icons/share_icon.png</file>
         <file>icons/share_icon_pressed.png</file>
+        <file>icons/list2.png</file>
     </qresource>
     <qresource prefix="/images">
         <file>images/button_default.png</file>
@@ -79,6 +85,8 @@
         <file>images/quit.png</file>
         <file>images/quit2.jpg</file>
         <file>images/textinput.png</file>
+        <file>images/msDefaultPicture.png</file>
+        <file>images/border.png</file>
     </qresource>
     <qresource prefix="/youtube">
         <file>youtube.qml</file>

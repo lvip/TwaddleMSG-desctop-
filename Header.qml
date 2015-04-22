@@ -6,7 +6,7 @@ Rectangle {
 
     anchors.top: parent.top
     width: parent.width
-    height: 70 * scaleFactor
+    height: 55 * scaleFactor
     color: "white"
 
     Item {
