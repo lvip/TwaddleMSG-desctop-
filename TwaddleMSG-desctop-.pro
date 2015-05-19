@@ -1,9 +1,16 @@
 TEMPLATE = app
 
-QT += qml quick widgets
+QT += sql qml quick widgets network multimedia
 
 SOURCES += main.cpp \
-    receiver.cpp
+    receiver.cpp \
+    server/client.cpp \
+    server/connection.cpp \
+    server/peermanager.cpp \
+    server/server.cpp \
+    audioinput.cpp \
+    voip.cpp \
+    voipclient.cpp
 
 RESOURCES += qml.qrc
 
@@ -14,4 +21,11 @@ QML_IMPORT_PATH =
 include(deployment.pri)
 
 HEADERS += \
-    receiver.h
+    receiver.h \
+    server/client.h \
+    server/connection.h \
+    server/peermanager.h \
+    server/server.h \
+    audioinput.h \
+    voip.h \
+    voipclient.h

@@ -4,7 +4,7 @@ import QtQuick.Window 2.2
 import QtQuick.Controls 1.3
 import QtQuick.Layouts 1.1
 import QtQuick.Controls.Styles 1.1
-
+import com.ics.demo 1.0
 ApplicationWindow {
     visible: true
     width: 800

@@ -3,9 +3,6 @@ import QtQuick 2.3
 import QtQuick.Controls 1.3
 import QtQuick.Layouts 1.1
 import com.ics.demo 1.0
-import com.ics.audio 1.0
-import com.ics.voipclient 1.0
-import QtQuick.LocalStorage 2.0
 //import QtQuick.Controls.Styles 1.1
 
 
@@ -14,45 +11,6 @@ Item {
 
     height: parent.height
     width: parent.width
-    Component.onCompleted: setprevMSG();
-        function setprevMSG(){
-            var db = LocalStorage.openDatabaseSync("QQmlExampleDB", "1.0", "The Example QML SQL!", 1000000);
-            console.log("setprevMSG()")
-
-            //обрашение к локальной базе данных
-            db.transaction(
-                function(tx) {
-                    // Create the database if it doesn't already exist
-                    tx.executeSql('CREATE TABLE IF NOT EXISTS History1(salutation TEXT, salutee TEXT,timesend TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL)');
-
-                    // Add (another) greeting row
-                    //tx.executeSql('INSERT INTO History1(salutation, salutee) VALUES ("bla","blub")');
-
-                    // Show all added greetings
-                    var rs = tx.executeSql('SELECT * FROM History1 ORDER BY timesend desc limit 5');
-
-                    var r = ""
-                    for(var i = 0; i < rs.rows.length; i++) {
-                        r = rs.rows.item(i).salutation + ", " + rs.rows.item(i).salutee + rs.rows.item(i).timesend +"\n"
-                        chatContent.append({"content": r,datt: new Date(rs.rows.item(i).timesend).toLocaleString()})
-                        console.log(r)
-
-                    }
-                }
-            )
-            chatView.positionViewAtEnd()
-        }
-
-    InputTest{
-
-        id:audio1
-
-    }
-    VoIPClient
-    {
-        id:audio2
-    }
-
     Client
     {
         id:client1
@@ -96,8 +54,6 @@ Item {
          AnchorAnimation { duration: 500 }
      }
     }
-
-
     ButtonI {
         z:30
         id: contanB
@@ -124,24 +80,6 @@ Item {
             console.log(container1.state)
 
         }
-
-    }
-    ButtonM {
-        z:300
-        id: callB
-        anchors.left: contanB.right
-        anchors.top: rectangle1.bottom
-        label:"Позвонить"
-        onButtonClick:audio2.callfriend()
-
-    }
-    ButtonM {
-        z:300
-        id: finishcallB
-        anchors.left: callB.right
-        anchors.top: rectangle1.bottom
-        label:"Сбросить"
-        onButtonClick:audio2.FinishCall()
 
     }
 Rectangle {
@@ -201,11 +139,7 @@ Rectangle {
         var data = input.text
         input.clear()
         client1.sendMessage(data)
-        chatContent.append({content: client1.nickName()+": " + data,datt: new Date().toLocaleString()})
-        var db = LocalStorage.openDatabaseSync("QQmlExampleDB", "1.0", "The Example QML SQL!", 1000000);
-        db.transaction(
-            function(tx) {
-        tx.executeSql('INSERT INTO History1(salutation, salutee) VALUES(?, ?)', [data, data]);})
+        chatContent.append({content: client1.nickName()+": " + data})
         //client1.newMe
         //! [BluetoothSocket-5]
        // socket.stringData = data
@@ -218,11 +152,8 @@ Rectangle {
 
     function sendMessageToClient(nick,message)
     {
-        chatContent.append({content: nick+": "+message,datt: new Date().toLocaleString()})
+        chatContent.append({content: nick+": "+message})
         chatView.positionViewAtEnd()
-        db.transaction(
-            function(tx) {
-        tx.executeSql('INSERT INTO History1(salutation, salutee) VALUES(?, ?)', [message, message]);})
     }
 
     Item {
@@ -232,12 +163,9 @@ Rectangle {
         anchors.bottom: parent.bottom
         ListModel {
             id: chatContent
-            dynamicRoles: true
             ListElement {
                 content: "Connected to chat server"
-                datt:"cutdate"
             }
-
         }
         InputBox
         {
@@ -260,19 +188,8 @@ Rectangle {
             label: "Send"
             onButtonClick: chatBox.sendMessage()
         }
-        ButtonM {
-            id: voicebut
-            anchors.right: sendButton.right
-            anchors.bottom: sendButton.top
-            label: audio1.getvollevel()
-            onButtonClick: {voicebut.label=audio1.getvollevel();
-            //audio2.run();
-            audio2.Call();}
-
-        }
 
         Rectangle {
-
             id: rectangle1
             //height: parent.height - input.height - 50
             height: parent.height - input.height - 50
@@ -286,13 +203,14 @@ Rectangle {
                 width: parent.width
                 height: parent.height
                // anchors.margins: 5
-                //flickableItem.interactive: true
+                flickableItem.interactive: true
                 ListView {
                     id: chatView
                     delegate:delegateit
+                    anchors.margins: 30
 
-                    width: parent.width
-                    height: parent.height
+                    width: parent.width-5
+                    height: parent.height-5
                     //anchors.centerIn: parent
                     model: chatContent
                     spacing: 10
@@ -310,7 +228,7 @@ Rectangle {
 //элемент чата
 Component {
     id: delegateit
-    //property string dattt: model.
+
     //делегат для листа
     BorderImage {
         id: item
@@ -321,7 +239,6 @@ Component {
        height: textInput2.contentHeight+30
        border.left: 5; border.top: 5
        border.right: 5; border.bottom: 5
-
        //color:"gray"
        //color: index % 2 === 0 ? "#EEE" : "#DDD"
        source: mouse.pressed ? "/chat/chat/delegate_pressed.png" : "/chat/chat/delegate.png"
@@ -343,7 +260,6 @@ Component {
        }
        Image {
            id: checkbox
-
            anchors.left: parent.left
            anchors.leftMargin: 16
            width: 32
@@ -379,10 +295,9 @@ Component {
        }
        Text{
            id:dataT
-           text: model.datt || "lightgray"
            z:20
            font.pixelSize: 10
-           //text: receiver.getCurrentDateTime1()
+           text: receiver.getCurrentDateTime1()
            Connections {
                target: receiver
                onSendToQml: {
@@ -393,10 +308,9 @@ Component {
          //      target: applicationData1
            //    onDataChanged: console.log("The application data changed!")
            //}
-
        }
 
-         TextEdit {
+         TextInput {
 
              id: textInput2
              readOnly: true
@@ -408,10 +322,9 @@ Component {
              horizontalAlignment: Text.AlignLeft
              verticalAlignment: Text.AlignVCenter
              focus: true
-             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+             wrapMode: Text.WrapAnywhere
              selectByMouse: true
-             text: model.content
-             textFormat: Text.RichText
+             text: modelData
              font.pixelSize: 15
          }
      }

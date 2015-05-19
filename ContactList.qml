@@ -2,6 +2,8 @@
 import QtQuick 2.3
 import QtQuick.Controls 1.3
 import QtQuick.Controls.Styles 1.1
+import com.ics.demo 1.0
+//import Qt.WebSockets 1.0
   Item{
       id:com1
     Component.onDestruction: console.log("destroyed inline item: " + stackView.index)
@@ -10,8 +12,27 @@ import QtQuick.Controls.Styles 1.1
        anchors.fill: parent
        color: "#11ffffff"
     }
-
-
+   /* function appendMessage(message) {
+        messageBox.text += "\n" + message
+    }
+    WebSocket {
+        id: socket
+        url: server.url
+        onTextMessageReceived: appendMessage(qsTr("Client received message: %1").arg(message))
+        onStatusChanged: {
+            if (socket.status == WebSocket.Error) {
+                appendMessage(qsTr("Client error: %1").arg(socket.errorString));
+            } else if (socket.status == WebSocket.Closed) {
+                appendMessage(qsTr("Client socket closed."));
+            }
+        }
+    }
+    Client
+    {
+    id:client2
+    onNewMessage:  {
+        chatBox.sendMessageToClient(from,message)}
+    }*/
 ScrollView {
     width: parent.width
     height: parent.height
@@ -28,9 +49,9 @@ ScrollView {
             text: "Контакт #" + modelData
             Menu { id: contextMenu
                 MenuItem {
-                    text: qsTr('Начать чат')
+                    text: qsTr('Начать голосовой чат')
                     shortcut: "Ctrl+Enter"
-                    onTriggered: stackView.push(Qt.resolvedUrl("/chat/chat2.qml"))
+                    onTriggered: stackView.push(Qt.resolvedUrl("/chat/voicechat.qml"))
                 }
                 MenuItem {
                     text: qsTr('Удалить из друзей')
@@ -57,9 +78,17 @@ ScrollView {
                                     }
                                     else{
                                         if(stackView.depth>2)
+                                        {
+                                            //socket.sendTextMessage(qsTr("Hello Server!"))
+                                            //client2.sendQueryToServer("Тест сооющение")
                                             stackView.push({item:Qt.resolvedUrl("/chat/chat3.qml"), destroyOnPop:true,replace:true})
+                                        }
                                         else
-                                        stackView.push({item:Qt.resolvedUrl("/chat/chat3.qml"), destroyOnPop:true})
+                                        {
+                                            //socket.sendTextMessage(qsTr("Hello Server!"));
+                                           // client2.sendQueryToServer("Тест сооющение")
+                                            stackView.push({item:Qt.resolvedUrl("/chat/chat3.qml"), destroyOnPop:true})
+                                        }
                                     }
             }
 

@@ -59,6 +59,9 @@
         <file>ButtonI.qml</file>
         <file>icons/contactlistS.jpg</file>
         <file>AndroidDelegateC.qml</file>
+        <file>ContactListTab.qml</file>
+        <file>voicechat.qml</file>
+        <file>contactAction.qml</file>
     </qresource>
     <qresource prefix="/icons">
         <file>icons/add_icon.png</file>
