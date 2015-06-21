@@ -56,7 +56,7 @@ ScrollView {
                 MenuItem {
                     text: qsTr('Удалить из друзей')
                     shortcut: "Ctrl+DEL"
-                    onTriggered: stackView.push(Qt.resolvedUrl("/chat/chat3.qml"))
+                    onTriggered: stackView.push(Qt.resolvedUrl("/chat/chat2.qml"))
                 }
                 MenuItem {
                     text: qsTr('Сделать заметку о контакте')

@@ -62,6 +62,7 @@
         <file>ContactListTab.qml</file>
         <file>voicechat.qml</file>
         <file>contactAction.qml</file>
+        <file>ButtonE.qml</file>
     </qresource>
     <qresource prefix="/icons">
         <file>icons/add_icon.png</file>
@@ -90,6 +91,9 @@
         <file>images/textinput.png</file>
         <file>images/msDefaultPicture.png</file>
         <file>images/border.png</file>
+        <file>images/telegram_background.png</file>
+        <file>images/emoji.png</file>
+        <file>images/emoji-light.png</file>
     </qresource>
     <qresource prefix="/youtube">
         <file>youtube.qml</file>

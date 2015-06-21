@@ -111,7 +111,7 @@ void AudioTransmitter::Stop(void)
 void AudioTransmitter::sendDatagrams(void)
 {
     QByteArray tmp = audio_device->read(maxsize);
-    socket.writeDatagram(tmp.data(), tmp.size(), QHostAddress("192.168.2.46"), 45001);
+    socket.writeDatagram(tmp.data(), tmp.size(), QHostAddress("127.0.0.1"), 45001);
     //qDebug()<< "senddatagramm"<<tmp.data();
 }
 

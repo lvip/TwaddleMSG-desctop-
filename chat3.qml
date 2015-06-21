@@ -12,6 +12,7 @@ import QtQuick.LocalStorage 2.0
 Item {
     id: chatroot
 
+    property int opacitypopup: 0
     height: parent.height
     width: parent.width
     Component.onCompleted: setprevMSG();
@@ -29,7 +30,7 @@ Item {
                     //tx.executeSql('INSERT INTO History1(salutation, salutee) VALUES ("bla","blub")');
 
                     // Show all added greetings
-                    var rs = tx.executeSql('SELECT * FROM History1 ORDER BY timesend desc limit 5');
+                    var rs = tx.executeSql('SELECT * FROM History1 ORDER BY timesend limit 5');
 
                     var r = ""
                     for(var i = 0; i < rs.rows.length; i++) {
@@ -201,7 +202,7 @@ Rectangle {
         var data = input.text
         input.clear()
         client1.sendMessage(data)
-        chatContent.append({content: client1.nickName()+": " + data,datt: new Date().toLocaleString()})
+        chatContent.append({color: "orange",content: client1.nickName()+": " + data,datt: new Date().toLocaleString()})
         var db = LocalStorage.openDatabaseSync("QQmlExampleDB", "1.0", "The Example QML SQL!", 1000000);
         db.transaction(
             function(tx) {
@@ -232,16 +233,86 @@ Rectangle {
         anchors.bottom: parent.bottom
         ListModel {
             id: chatContent
-            dynamicRoles: true
             ListElement {
                 content: "Connected to chat server"
                 datt:"cutdate"
+                color:"black"
+
             }
 
         }
+        Rectangle
+           {
+
+               color: "darkgreen"
+               width: 200
+               height: 100
+               opacity: opacitypopup
+               z:500
+               ListView {
+                   id: tab_row
+                   anchors.top: parent.parent
+                   model: 10
+                   delegate: ButtonE     {
+                       width: 10
+                       height: 10
+                       textFont.pixelSize: Math.floor(9*1)
+                       normalColor: "#00000000"
+                       highlightColor: "#0f000000"
+                       cursorShape: Qt.PointingHandCursor
+                       textColor: emodel.currentKeyIndex==index? "#333333" : Cutegram.currentTheme.masterColor
+                       text: "Cutegram.normalizeText(emodel.keys[index])"
+                       onClicked: emodel.currentKey = emodel.keys[index]
+                   }
+               }
+               Behavior on opacity { NumberAnimation { duration: 500 } }
+
+               anchors
+               {
+                   centerIn:parent
+               }
+
+               Text
+               {
+                   anchors
+                   {
+                       centerIn:parent
+                   }
+                   font.family: "Segoe UI Light"
+                   font.pixelSize: 20
+                   text : "POPUP"
+                   color: "darkgrey"
+               }
+
+               MouseArea
+               {
+                   anchors.fill: parent
+
+                   onClicked:
+                   {
+                       opacitypopup = 0
+                   }
+               }
+           }
         InputBox
         {
             id: input
+            ButtonE {
+                id: emoji_btn
+                anchors.right: input.right
+                anchors.verticalCenter: input.verticalCenter
+                height: 30*1
+                width: height
+                opacity:0.7
+                highlightColor: "#220d80ec"
+                normalColor: "#00000000"
+                cursorShape: Qt.PointingHandCursor
+                iconHeight: height*0.55
+                icon: 0? "qrc:/images/images/emoji-light.png" : "qrc:/images/images/emoji.png"
+                onClicked: {
+                    chatroot.opacitypopup=1;
+                }
+            }
             Keys.onReturnPressed:
             {chatBox.sendMessage()
             input.forceActiveFocus()}
@@ -278,10 +349,18 @@ Rectangle {
             height: parent.height - input.height - 50
             width: parent.width;
             color: "#aad6d5"
+
             anchors.top: parent.top
             border.color: "black"
             border.width: 1
             radius: 5
+            Image {
+              anchors.fill: parent;
+              fillMode: Image.Tile
+                 horizontalAlignment: Image.AlignLeft
+                 verticalAlignment: Image.AlignTop
+              source: "qrc:/images/images/telegram_background.png"
+            }
             ScrollView {
                 width: parent.width
                 height: parent.height
@@ -400,6 +479,7 @@ Component {
 
              id: textInput2
              readOnly: true
+             color:model.color
              anchors.margins: 5
              anchors.left: checkbox.right
              anchors.right: parent.right
