@@ -1,4 +1,4 @@
-import QtQuick 1.0
+import QtQuick 2.6
 import Qt.labs.shaders 1.0
 
 Item

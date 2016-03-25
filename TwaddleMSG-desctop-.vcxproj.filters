@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;moc;h;def;odl;idl;res;</Extensions>
+    </Filter>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;moc;h;def;odl;idl;res;</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="audioinput.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="server\client.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="server\connection.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="server\peermanager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="receiver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="server\server.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="voip.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="voipclient.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="audioinput.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="server\client.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="server\connection.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="server\peermanager.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="receiver.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="server\server.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="voip.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="voipclient.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="debug\moc_audioinput.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="release\moc_audioinput.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="debug\moc_client.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="release\moc_client.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="debug\moc_connection.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="release\moc_connection.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="debug\moc_peermanager.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="release\moc_peermanager.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="debug\moc_receiver.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="release\moc_receiver.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="debug\moc_server.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="release\moc_server.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="debug\moc_voip.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="release\moc_voip.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="debug\moc_voipclient.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="release\moc_voipclient.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="debug\qrc_qml.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="release\qrc_qml.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AndroidDelegate.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="AndroidDelegateC.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Button.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="ButtonE.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="ButtonI.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="ButtonM.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="ButtonPage.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="camera\CameraButton.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="camera\CameraListButton.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="camera\CameraListPopup.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="camera\CameraPropertyButton.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="camera\CameraPropertyPopup.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="ContactList.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="ContactListTab.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Effect.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="camera\FocusButton.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Header.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="InputBox.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Login.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\Logo.jpg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="camera\PhotoCaptureControls.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="camera\PhotoPreview.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="camera\Popup.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Search.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="ShaderButton.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="TextField.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="TouchButton.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="camera\VideoCaptureControls.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="camera\VideoPreview.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="camera\ZoomControl.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\add_icon.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\add_icon_pressed.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\back_icon.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\border.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\button_default.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\button_pressed.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="camera\images\camera_auto_mode.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="camera\images\camera_camera_setting.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="camera\images\camera_flash_auto.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="camera\images\camera_flash_fill.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="camera\images\camera_flash_off.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="camera\images\camera_flash_redeye.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="camera\images\camera_white_balance_cloudy.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="camera\images\camera_white_balance_flourescent.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="camera\images\camera_white_balance_incandescent.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="camera\images\camera_white_balance_sunny.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="chat.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="chat2.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="chat3.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="chat4.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="chat\checkbox.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="chat\checkbox_checked.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\clear.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\close-exit-button-11703915.jpg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="contact.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="contactAction.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\contactlistS.jpg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="camera\declarative-camera.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\default.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="chat\delegate.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="chat\delegate_pressed.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\delete_icon.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\delete_icon_pressed.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\emoji-light.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\emoji.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\exit.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\lineedit-bg.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\list2.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="main.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="main2.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\msDefaultPicture.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <CustomBuild Include="qml.qrc">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <None Include="images\quit.jpg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\quit.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\quit2.jpg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\reload_icon.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\reload_icon_pressed.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\share_icon.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\share_icon_pressed.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="te.jpg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\telegram_background.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="images\textinput.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="camera\images\toolbutton.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="camera\images\toolbutton.sci">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="voicechat.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="youtube.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+</Project>

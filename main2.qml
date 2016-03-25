@@ -15,17 +15,13 @@ ApplicationWindow {
     property int intScaleFactor: Math.max(1, scaleFactor)
 
 
-    Rectangle {
-        color: "#212126"
-        anchors.fill: parent
-    }
 
 
     Header
     {
         id: header1
         opacity: 0
-        z:-5
+        z:1
         text: "TwaddleMSG"
         //rightMargin: icon.width
 
@@ -34,6 +30,7 @@ ApplicationWindow {
 
     Item
     {
+         anchors.fill: parent
         id:itemL
         z:-1
         ListModel {
@@ -56,10 +53,12 @@ ApplicationWindow {
             }
         }
     }
+
     StackView {
         id: stackView2
         z:1
-        anchors.top: header1.top
+
+         anchors.fill: parent
         //anchors.fill: parent
         // Implements back key navigation
         focus: true
@@ -70,33 +69,40 @@ ApplicationWindow {
 
         initialItem: Login{}
     }
-   StackView {
-        id: stackView
-        opacity: 0
-        visible: false
-        anchors.top: header1.bottom
-        anchors.bottom : parent.bottom
-        //anchors.fill: parent
-        // Implements back key navigation
-        focus: true
-        Keys.onReleased: if (event.key === Qt.Key_Home && stackView.depth > 1) {
-                             stackView.pop();
-                             event.accepted = true;
-                         }
 
-        initialItem: Item {
-            width: parent.width
-            height: parent.height
-            ListView {
-                model: pageModel
-                anchors.fill: parent
-                delegate: AndroidDelegate {
-                    text: title
-                    onClicked: {stackView.push(Qt.resolvedUrl(page))}
+   Rectangle {
+       id: maincontent
+       color: "#212126"
+        anchors.top: header1.bottom
+        width:parent.width
+        height: parent.height-header1.height
+       StackView {
+            id: stackView
+            opacity: 0
+            visible: true
+
+            anchors.fill: parent
+            // Implements back key navigation
+            focus: true
+            Keys.onReleased: if (event.key === Qt.Key_Home && stackView.depth > 1) {
+                                 stackView.pop();
+                                 event.accepted = true;
+                             }
+
+            initialItem: Item {
+                width: parent.width
+                height: parent.height
+                ListView {
+                    model: pageModel
+                    anchors.fill: parent
+                    delegate: AndroidDelegate {
+                        text: title
+                        onClicked: {stackView.push(Qt.resolvedUrl(page))}
+                    }
                 }
             }
         }
-    }
+   }
 
     Component {
         id: touchStyle

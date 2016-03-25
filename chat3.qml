@@ -13,11 +13,12 @@ Item {
     id: chatroot
 
     property int opacitypopup: 0
+    property var db
     height: parent.height
     width: parent.width
     Component.onCompleted: setprevMSG();
         function setprevMSG(){
-            var db = LocalStorage.openDatabaseSync("QQmlExampleDB", "1.0", "The Example QML SQL!", 1000000);
+            db = LocalStorage.openDatabaseSync("QQmlExampleDB", "1.0", "The Example QML SQL!", 1000000);
             console.log("setprevMSG()")
 
             //обрашение к локальной базе данных
@@ -30,7 +31,7 @@ Item {
                     //tx.executeSql('INSERT INTO History1(salutation, salutee) VALUES ("bla","blub")');
 
                     // Show all added greetings
-                    var rs = tx.executeSql('SELECT * FROM History1 ORDER BY timesend limit 5');
+                    var rs = tx.executeSql('SELECT * FROM History1 ORDER BY timesend limit 100');
 
                     var r = ""
                     for(var i = 0; i < rs.rows.length; i++) {
@@ -203,7 +204,7 @@ Rectangle {
         input.clear()
         client1.sendMessage(data)
         chatContent.append({color: "orange",content: client1.nickName()+": " + data,datt: new Date().toLocaleString()})
-        var db = LocalStorage.openDatabaseSync("QQmlExampleDB", "1.0", "The Example QML SQL!", 1000000);
+        db = LocalStorage.openDatabaseSync("QQmlExampleDB", "1.0", "The Example QML SQL!", 1000000);
         db.transaction(
             function(tx) {
         tx.executeSql('INSERT INTO History1(salutation, salutee) VALUES(?, ?)', [data, data]);})
@@ -251,7 +252,7 @@ Rectangle {
                z:500
                ListView {
                    id: tab_row
-                   anchors.top: parent.parent
+                   anchors.top: parent.top
                    model: 10
                    delegate: ButtonE     {
                        width: 10

@@ -14,6 +14,9 @@
         <file>AndroidDelegateC.qml</file>
         <file>ShaderButton.qml</file>
         <file>Effect.qml</file>
+        <file>ButtonM.qml</file>
+        <file>InputBox.qml</file>
+        <file>addNewContact.qml</file>
     </qresource>
     <qresource prefix="/camera">
         <file>camera/CameraButton.qml</file>

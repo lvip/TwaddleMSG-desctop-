@@ -2,11 +2,9 @@ import QtQuick 2.3
 import QtQuick.LocalStorage 2.0
 Item {
     id:maincontactitem
-    property int idcontact
     width: parent.width
     height: parent.height
     z:-5
-
     property var db: null
     Component.onCompleted: initContact();
         function initContact(){
@@ -17,10 +15,8 @@ Item {
             db.transaction(
                 function(tx) {
                     // Create the database if it doesn't already exist
-                    tx.executeSql('CREATE TABLE IF NOT EXISTS Contact(id INTEGER NOT NULL PRIMARY KEY,
-name TEXT,
-ip TEXT,
-timesend TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL)');
+                    tx.executeSql('CREATE TABLE IF NOT EXISTS Contact(name TEXT, ip TEXT,timesend TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL)');
+
 
                     // Show all added greetings
                     var rs = tx.executeSql('SELECT * FROM Contact ORDER BY timesend limit 1');
@@ -30,7 +26,6 @@ timesend TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL)');
                         r = rs.rows.item(i).name+"\n"
                         nameValue.text=r;
                         console.log(r)
-                        console.log(idcontact)
 
                     }
                 }
@@ -41,10 +36,9 @@ timesend TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL)');
                 var db = LocalStorage.openDatabaseSync("QQmlExampleDB", "1.0", "The Example QML SQL!", 1000000);
                  db.transaction(
                      function(tx) {
-                 tx.executeSql('UPDATE Contact SET name = ?, ip = ? WHERE id = ?' , [ip, ip,idcontact]);})
+                 tx.executeSql('INSERT INTO Contact(name,ip) VALUES(?,?)', [ip, ip]);})
              console.log(ip)
              }
-
 
 
 

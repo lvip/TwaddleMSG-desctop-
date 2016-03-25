@@ -1,6 +1,5 @@
-import QtQuick 2.3
-import QtQuick.Layouts 1.0
-import QtQuick.Controls 1.0 as Controls
+import QtQuick 2.6
+import QtQuick.Controls 1.5 as Controls
 Rectangle {
     width: 400
     height: 600
@@ -9,9 +8,6 @@ Rectangle {
     Column {
         anchors.centerIn: parent
         anchors.alignWhenCentered: true
-        width: 360 * scaleFactor
-        spacing: 14 * intScaleFactor
-
         TextField {
             id: nameInput
             onAccepted: passwordInput.forceActiveFocus()
@@ -29,7 +25,6 @@ Rectangle {
 
         Row {
             // button
-            spacing: 20 * scaleFactor
             width: 360 * scaleFactor
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.alignWhenCentered: true
@@ -65,10 +60,13 @@ Rectangle {
         stackView2.opacity=0
         stackView2.z=-3
         stackView2.visible=false
+        stackView2.focus=false
         header1.opacity=1
         header1.z=5
         stackView.visible=true
+        stackView.focus=true
         stackView.opacity=1
+        stackView.z=1000
     }
 
 }

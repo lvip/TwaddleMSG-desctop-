@@ -164,6 +164,7 @@ void PeerManager::updateAddresses()
             if (broadcastAddress != QHostAddress::Null && entry.ip() != QHostAddress::LocalHost) {
                 broadcastAddresses << broadcastAddress;
                 ipAddresses << entry.ip();
+                qDebug()<<ipAddresses<<"это ип адресс";
             }
         }
     }
