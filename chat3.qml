@@ -13,10 +13,15 @@ Item {
     id: chatroot
 
     property int opacitypopup: 0
-    property var db
+    property var db: null
+    property int idcontact
     height: parent.height
     width: parent.width
-    Component.onCompleted: setprevMSG();
+    Component.onCompleted:
+    {
+        setprevMSG();
+        addip();
+    }
         function setprevMSG(){
             db = LocalStorage.openDatabaseSync("QQmlExampleDB", "1.0", "The Example QML SQL!", 1000000);
             console.log("setprevMSG()")
@@ -25,17 +30,17 @@ Item {
             db.transaction(
                 function(tx) {
                     // Create the database if it doesn't already exist
-                    tx.executeSql('CREATE TABLE IF NOT EXISTS History1(salutation TEXT, salutee TEXT,timesend TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL)');
+                    tx.executeSql('CREATE TABLE IF NOT EXISTS History(id INTEGER NOT NULL PRIMARY KEY,messege TEXT, user_id INT,is_self INTEGER,timesend TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL)');
 
                     // Add (another) greeting row
-                    //tx.executeSql('INSERT INTO History1(salutation, salutee) VALUES ("bla","blub")');
+                    //tx.executeSql('INSERT INTO History(salutation, salutee) VALUES ("bla","blub")');
 
                     // Show all added greetings
-                    var rs = tx.executeSql('SELECT * FROM History1 ORDER BY timesend limit 100');
+                    var rs = tx.executeSql('SELECT * FROM History WHERE user_id= ? ORDER BY timesend limit 100', [idcontact]);
 
                     var r = ""
                     for(var i = 0; i < rs.rows.length; i++) {
-                        r = rs.rows.item(i).salutation + ", " + rs.rows.item(i).salutee + rs.rows.item(i).timesend +"\n"
+                        r = rs.rows.item(i).id + ", " + rs.rows.item(i).messege+"\n"
                         chatContent.append({"content": r,datt: new Date(rs.rows.item(i).timesend).toLocaleString()})
                         console.log(r)
 
@@ -43,6 +48,23 @@ Item {
                 }
             )
             chatView.positionViewAtEnd()
+        }
+        function addip()
+        {
+            console.log("вызов addip")
+            db.transaction(
+                function(tx) {
+                    var rs = tx.executeSql('SELECT * FROM Contact WHERE id=? ORDER BY timesend limit 1',[idcontact]);
+
+                    var r = ""
+                    for(var i = 0; i < rs.rows.length; i++) {
+                        r = rs.rows.item(i).ip
+                        client1.addAddress(r)
+                        console.log("это ип в qml" +r)
+                    }
+                }
+                )
+
         }
 
     InputTest{
@@ -204,10 +226,9 @@ Rectangle {
         input.clear()
         client1.sendMessage(data)
         chatContent.append({color: "orange",content: client1.nickName()+": " + data,datt: new Date().toLocaleString()})
-        db = LocalStorage.openDatabaseSync("QQmlExampleDB", "1.0", "The Example QML SQL!", 1000000);
         db.transaction(
             function(tx) {
-        tx.executeSql('INSERT INTO History1(salutation, salutee) VALUES(?, ?)', [data, data]);})
+        tx.executeSql('INSERT INTO History(messege, user_id,is_self) VALUES(?, ?, 0)', [data, idcontact]);})
         //client1.newMe
         //! [BluetoothSocket-5]
        // socket.stringData = data
@@ -224,7 +245,7 @@ Rectangle {
         chatView.positionViewAtEnd()
         db.transaction(
             function(tx) {
-        tx.executeSql('INSERT INTO History1(salutation, salutee) VALUES(?, ?)', [message, message]);})
+        tx.executeSql('INSERT INTO History(messege, user_id,i_self) VALUES(?, ?, 1)', [message, idcontact]);})
     }
 
     Item {

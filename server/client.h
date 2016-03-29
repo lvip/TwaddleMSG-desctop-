@@ -56,6 +56,7 @@ class Client : public QObject
 public:
     Client();
     Q_INVOKABLE void sendMessage(const QString &message);
+    Q_INVOKABLE void addAddress(const QString &address);
     Q_INVOKABLE void sendQueryToServer(const QString &query);
     Q_INVOKABLE QString nickName() const;
     Q_INVOKABLE QString getMsg() const;

@@ -58,6 +58,7 @@ public:
     PeerManager(Client *client);
 
     void setServerPort(int port);
+    void addPeerAddress(QString address);
     QByteArray userName() const;
     void startBroadcasting();
     bool isLocalHostAddress(const QHostAddress &address);

@@ -40,12 +40,18 @@ timesend TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL)');
                 }
             )
         }
+        function deletecontact(id)
+        {
+            db.transaction(
+                function(tx) {
+            tx.executeSql('DELETE FROM Contact WHERE id=?', [id]);})
+        }
 
 ListModel
 {
     id:contactmodel
     ListElement {
-        property int idcontact
+        property int idcontact: 0
         name: "здесь будет имя пользователя"
         datt:"здесь будет дата добавления"
         ip:"здесь будет ип"
@@ -69,8 +75,8 @@ ScrollView {
         z:40
         delegate: AndroidDelegateC {
             z:-100
-            property int id: model.idcontact
-            text: "Контакт #" + model.name
+            property int idcon: model.idcontact
+            text: "#" + model.name
             Menu { id: contextMenu
                 MenuItem {
                     text: qsTr('Начать голосовой чат')
@@ -80,7 +86,7 @@ ScrollView {
                 MenuItem {
                     text: qsTr('Удалить из друзей')
                     shortcut: "Ctrl+DEL"
-                    onTriggered: stackView.push(Qt.resolvedUrl("/chat/chat2.qml"))
+                    onTriggered: deletecontact(idcontact)
                 }
                 MenuItem {
                     text: qsTr('Сделать заметку о контакте')

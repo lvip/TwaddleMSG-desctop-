@@ -83,6 +83,8 @@ bool Connection::sendMessage(const QString &message)
 
     QByteArray msg = message.toUtf8();
     QByteArray data = "MESSAGE " + QByteArray::number(msg.size()) + ' ' + msg;
+    qDebug() << "Received in C++ from QML:sendMessage;" << message;
+
     return write(data) == data.size();
 }
 bool Connection::sendVoice(const QByteArray &voice)
@@ -260,11 +262,11 @@ void Connection::processData()
         abort();
         return;
     }
-    qDebug() << "Received in C++ from QML:" << currentDataType;
+    qDebug() << "Received in C++ from QML : processData()" << currentDataType;
     switch (currentDataType) {
     case PlainText:
         emit newMessage(username, QString::fromUtf8(buffer));
-        qDebug() << "Received in C++ from QML:" <<buffer;
+        qDebug() << "Received in C++ from QML: processData() buffer" <<buffer;
         break;
     case Ping:
         write("PONG 1 p");

@@ -23,7 +23,7 @@ ip TEXT,
 timesend TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL)');
 
                     // Show all added greetings
-                    var rs = tx.executeSql('SELECT * FROM Contact ORDER BY timesend limit 1');
+                    var rs = tx.executeSql('SELECT * FROM Contact WHERE id=? ORDER BY timesend limit 1',[idcontact]);
 
                     var r = ""
                     for(var i = 0; i < rs.rows.length; i++) {

@@ -72,7 +72,6 @@ PeerManager::PeerManager(Client *client)
         username = "unknown";
 
     updateAddresses();
-    serverPort = 0;
 
     broadcastSocket.bind(QHostAddress::Any, broadcastPort, QUdpSocket::ShareAddress
                          | QUdpSocket::ReuseAddressHint);
@@ -114,13 +113,14 @@ void PeerManager::sendBroadcastDatagram()
     QByteArray datagram(username);
     datagram.append('@');
     datagram.append(QByteArray::number(serverPort));
-   // qDebug()<<datagram<<"Датаграмма";
+    qDebug()<<datagram<<"СендДатаграмма";
     bool validBroadcastAddresses = true;
     foreach (QHostAddress address, broadcastAddresses) {
         if (broadcastSocket.writeDatagram(datagram, address,
                                           broadcastPort) == -1)
             validBroadcastAddresses = false;
     }
+    qDebug()<<datagram<<"СендДатаграмма";
     if (!validBroadcastAddresses)
         updateAddresses();
 }
@@ -143,7 +143,7 @@ void PeerManager::readBroadcastDatagram()
         int senderServerPort = list.at(1).toInt();
         if (isLocalHostAddress(senderIp) && senderServerPort == serverPort)
             continue;
-         //qDebug()<<datagram<<senderIp<<"РидДатаграмма";
+         qDebug()<<datagram<<senderIp<<"РидДатаграмма";
         if (!client->hasConnection(senderIp)) {
             Connection *connection = new Connection(this);
             emit newConnection(connection);
@@ -154,18 +154,26 @@ void PeerManager::readBroadcastDatagram()
 
 void PeerManager::updateAddresses()
 {
-    broadcastAddresses.clear();
-    ipAddresses.clear();
+    //broadcastAddresses.clear();
+    //ipAddresses.clear();
     qDebug()<<"апдейтюзер";
-    foreach (QNetworkInterface interface, QNetworkInterface::allInterfaces()) {
-        qDebug()<<interface;
-        foreach (QNetworkAddressEntry entry, interface.addressEntries()) {
-            QHostAddress broadcastAddress = entry.broadcast();
-            if (broadcastAddress != QHostAddress::Null && entry.ip() != QHostAddress::LocalHost) {
-                broadcastAddresses << broadcastAddress;
-                ipAddresses << entry.ip();
-                qDebug()<<ipAddresses<<"это ип адресс";
-            }
-        }
-    }
+//    foreach (QNetworkInterface interface, QNetworkInterface::allInterfaces()) {
+//        qDebug()<<interface;
+//        foreach (QNetworkAddressEntry entry, interface.addressEntries()) {
+//            QHostAddress broadcastAddress = entry.broadcast();
+//            if (broadcastAddress != QHostAddress::Null && entry.ip() != QHostAddress::LocalHost) {
+//                broadcastAddresses << broadcastAddress;
+//                ipAddresses << entry.ip();
+//                qDebug()<<ipAddresses<<"это ип адресс";
+//                qDebug()<<broadcastAddresses<<"это броадкаст адресс";
+//            }
+//        }
+//    }
+    broadcastAddresses <<QHostAddress("188.255.85.134");
+    ipAddresses<<QHostAddress("188.255.85.134");
+}
+void PeerManager::addPeerAddress(QString address)
+{
+    broadcastAddresses <<QHostAddress(address);
+    ipAddresses<<QHostAddress(address);
 }

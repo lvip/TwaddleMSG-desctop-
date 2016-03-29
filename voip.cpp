@@ -10,7 +10,7 @@ QAudioFormat AudioReciever::GetStreamAudioFormat(void)
    QAudioFormat format;
    format.setSampleRate(44100);
    //format.setChannels(1);
-   format.setSampleSize(16);
+   format.setSampleSize(24);
    format.setCodec("audio/pcm");
    format.setByteOrder(QAudioFormat::LittleEndian);
    format.setSampleType(QAudioFormat::UnSignedInt);
@@ -30,7 +30,8 @@ bool AudioReciever::Start(void)
     audio_device = audio_output->start();
 
     connect(&socket, SIGNAL(readyRead()), this, SLOT(readPendingDatagrams()));
-    return  socket.bind(QHostAddress::Any, 45001);
+    return  socket.bind(QHostAddress::Any, 45001,QUdpSocket::ShareAddress
+                        | QUdpSocket::ReuseAddressHint);
 
 
 }
@@ -74,7 +75,7 @@ QAudioFormat AudioTransmitter::GetStreamAudioFormat(void)
    QAudioDeviceInfo info1 = QAudioDeviceInfo::defaultInputDevice();
    format.setSampleRate(44100);
    //format.setChannels(1);
-   format.setSampleSize(16);
+   format.setSampleSize(24);
    format.setCodec("audio/pcm");
    format.setByteOrder(QAudioFormat::LittleEndian);
    format.setSampleType(QAudioFormat::UnSignedInt);
@@ -111,8 +112,8 @@ void AudioTransmitter::Stop(void)
 void AudioTransmitter::sendDatagrams(void)
 {
     QByteArray tmp = audio_device->read(maxsize);
-    socket.writeDatagram(tmp.data(), tmp.size(), QHostAddress("127.0.0.1"), 45001);
-    //qDebug()<< "senddatagramm"<<tmp.data();
+    socket.writeDatagram(tmp.data(), tmp.size(), QHostAddress("188.255.85.134"), remotePORT);
+    //qDebug()<< "senddatagramm remotePORT"<<remotePORT;
 }
 
 

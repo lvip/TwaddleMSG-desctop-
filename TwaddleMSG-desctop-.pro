@@ -29,3 +29,7 @@ HEADERS += \
     audioinput.h \
     voip.h \
     voipclient.h
+RC_FILE     = resources.rc
+
+DISTFILES += \
+    resources.rc

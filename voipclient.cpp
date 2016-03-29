@@ -1,9 +1,9 @@
 #include "voipclient.h"
 VoIPClient::VoIPClient(QObject *parent) : QThread(parent)
 {
-    localPORT=1234;
+    localPORT=45001;
     remoteHOST= QHostAddress::Any;
-    remotePORT=1234;
+    remotePORT=45001;
     qDebug()<< localPORT<<remoteHOST<<remotePORT;
     started=false;
     //this->run();
@@ -11,6 +11,8 @@ VoIPClient::VoIPClient(QObject *parent) : QThread(parent)
 
 void VoIPClient::run(void)
 {
+    if(!started)
+    {
     transmitter = new AudioTransmitter(localPORT, remoteHOST, remotePORT);
     reciever = new AudioReciever(localPORT, remoteHOST, remotePORT);
     reciever->Start();
@@ -21,6 +23,7 @@ void VoIPClient::run(void)
      reciever->Stop();
      delete transmitter;
      delete reciever;
+     }
 
 }
 void VoIPClient::callfriend(void)
@@ -39,7 +42,6 @@ void VoIPClient::callfriend(void)
 void VoIPClient::Call(void)
 {
     start();
-    run();
     qDebug()<< "call";
 }
 

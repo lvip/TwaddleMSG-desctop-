@@ -15,8 +15,10 @@ Item {
             db.transaction(
                 function(tx) {
                     // Create the database if it doesn't already exist
-                    tx.executeSql('CREATE TABLE IF NOT EXISTS Contact(name TEXT, ip TEXT,timesend TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL)');
-
+                    tx.executeSql('CREATE TABLE IF NOT EXISTS Contact(id INTEGER NOT NULL PRIMARY KEY,
+name TEXT,
+ip TEXT,
+timesend TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL)');
 
                     // Show all added greetings
                     var rs = tx.executeSql('SELECT * FROM Contact ORDER BY timesend limit 1');
@@ -31,12 +33,12 @@ Item {
                 }
             )
         }
-         function saveip(ip)
+         function saveip(name,ip)
              {
-                var db = LocalStorage.openDatabaseSync("QQmlExampleDB", "1.0", "The Example QML SQL!", 1000000);
+                //db = LocalStorage.openDatabaseSync("QQmlExampleDB", "1.0", "The Example QML SQL!", 1000000);
                  db.transaction(
                      function(tx) {
-                 tx.executeSql('INSERT INTO Contact(name,ip) VALUES(?,?)', [ip, ip]);})
+                 tx.executeSql('INSERT INTO Contact(name,ip) VALUES(?,?)', [name, ip]);})
              console.log(ip)
              }
 
@@ -71,13 +73,27 @@ Item {
     {
         id: inputip
         Keys.onReturnPressed:
-        {maincontactitem.saveip(inputip.text)
-        inputip.forceActiveFocus()}
+        {
+        inputname.forceActiveFocus()}
 
         height: 30
-        width: 200
+        width: 250
         anchors.left: iplabel.right
         anchors.bottom: iplabel.bottom
+
+    }
+    InputBox
+    {
+        id: inputname
+        Keys.onReturnPressed:
+        {maincontactitem.saveip(inputname.text,inputip.text)
+        inputip.forceActiveFocus()
+        stackView.push(Qt.resolvedUrl("qrc:/ContactList.qml"))}
+
+        height: 30
+        width: 250
+        anchors.left: namelabel.right
+        anchors.bottom: namelabel.bottom
 
     }
 

@@ -58,8 +58,8 @@ Client::Client()
 
 void Client::sendMessage(const QString &message)
 {
-    qDebug() << "Received in C++ from QML:" << message;
-    qDebug() << "Received in C++ from QML:" << nickName();
+    qDebug() << "Received in C++ from QML:message;" << message;
+    qDebug() << "Received in C++ from QMLickName():" << nickName();
     if (message.isEmpty())
         return;
 
@@ -67,6 +67,11 @@ void Client::sendMessage(const QString &message)
     foreach (Connection *connection, connections)
         connection->sendMessage(message);
 }
+void Client::addAddress(const QString &address)
+{
+    peerManager->addPeerAddress(address);
+}
+
 void Client::sendQueryToServer(const QString &query)
 {
 
@@ -100,6 +105,7 @@ bool Client::hasConnection(const QHostAddress &senderIp, int senderPort) const
 
     return false;
 }
+
 
 void Client::newConnection(Connection *connection)
 {
